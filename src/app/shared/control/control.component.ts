@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -12,6 +12,7 @@ import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '
   }
 })
 export class ControlComponent {
-  label = input.required<string>()
+  label = input.required<string>();
+  @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
 
 }
