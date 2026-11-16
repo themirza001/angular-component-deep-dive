@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
@@ -21,4 +21,5 @@ export class NewTicketsComponent {
     console.log(titleInput)
     this.form().nativeElement.reset()
   }
+
 }
