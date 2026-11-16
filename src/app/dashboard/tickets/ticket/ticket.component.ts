@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { Ticket } from '../ticket.model';
 
 @Component({
@@ -11,8 +11,12 @@ import { Ticket } from '../ticket.model';
 export class TicketComponent {
   @Input({ required: true }) data!: Ticket;
   detailsVisible = signal(false);
+  @Output() ticketId = new EventEmitter<string>();
 
   onToggleDatails() {
     this.detailsVisible.update((wasDetailsVisible) => !wasDetailsVisible);
+  }
+  onComplete() {
+    this.ticketId.emit(this.data.id);
   }
 }

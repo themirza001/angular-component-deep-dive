@@ -12,7 +12,17 @@ import { TicketComponent } from './ticket/ticket.component';
 })
 export class TicketsComponent {
   tickets: Ticket[] = []
+
   onAdd(newTicket: NewTicket) {
     this.tickets = [{ ...newTicket, id: new Date().getMilliseconds().toString(), status: 'open' }, ...this.tickets]
+  }
+
+  onComplete(ticketId: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === ticketId) {
+        ticket.status = 'closed'
+      }
+      return ticket;
+    })
   }
 }
