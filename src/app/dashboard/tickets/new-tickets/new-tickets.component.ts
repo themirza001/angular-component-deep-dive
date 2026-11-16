@@ -13,17 +13,18 @@ import { NewTicket } from '../ticket.model';
 })
 export class NewTicketsComponent {
 
-  // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
   @Output() add = new EventEmitter<NewTicket>();
 
-  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  enteredTitle: string = '';
+  enteredText: string = '';
 
-  onSubmit(titleInput: string, textInput: string) {
+  onSubmit() {
     this.add.emit({
-      title: titleInput,
-      text: textInput
+      title: this.enteredTitle,
+      text: this.enteredText
     });
-    this.form().nativeElement.reset();
+    this.enteredText = ''
+    this.enteredTitle = ''
   }
 
 }
