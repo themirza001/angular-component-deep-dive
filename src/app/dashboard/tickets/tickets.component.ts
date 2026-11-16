@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DashboardItemComponent } from '../dashboard-item/dashboard-item.component';
 import { NewTicketsComponent } from './new-tickets/new-tickets.component';
+import { NewTicket, Ticket } from './ticket.model';
 @Component({
   selector: 'app-tickets',
   standalone: true,
@@ -9,5 +10,8 @@ import { NewTicketsComponent } from './new-tickets/new-tickets.component';
   styleUrl: './tickets.component.css'
 })
 export class TicketsComponent {
-
+  ticket: Ticket[] = []
+  onAdd(newTicket: NewTicket) {
+    this.ticket = [{ ...newTicket, id: new Date().getMilliseconds().toString(), status: 'open' }, ...this.ticket]
+  }
 }
